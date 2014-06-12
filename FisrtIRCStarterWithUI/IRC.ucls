@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="com.cfranc.irc.ui.SimpleChatFrameClient.LockAction" 
+    project="FisrtIRCStarterWithUI" file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/ui/SimpleChatFrameClient.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="852" y="1387"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.cfranc.irc.client.SimpleChatClient" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/client/SimpleChatClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="170" x="233" y="196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.cfranc.irc.server.ClientConnectThread" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/server/ClientConnectThread.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="279" width="469" x="1853" y="659"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.cfranc.irc.server.User" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/server/User.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="126" x="2362" y="1158"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.cfranc.irc.server.ServerToClientThread" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/server/ServerToClientThread.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="196" x="2362" y="659"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="com.cfranc.irc.client.IfSenderModel" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/client/IfSenderModel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="156" x="639" y="1158"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="com.cfranc.irc.client.ClientToServerThread" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/client/ClientToServerThread.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="459" width="557" x="340" y="659"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.cfranc.irc.ui.SimpleChatFrameClient.ResourceAction" 
+    project="FisrtIRCStarterWithUI" file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/ui/SimpleChatFrameClient.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1075" y="1202"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="com.cfranc.irc.ui.SimpleChatClientApp" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/ui/SimpleChatClientApp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="258" x="937" y="196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="com.cfranc.irc.ui.SimpleChatFrameClient" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/ui/SimpleChatFrameClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1118" y="837"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="11" language="java" name="com.cfranc.irc.IfClientServerProtocol" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/IfClientServerProtocol.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2121" y="249"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="12" language="java" name="com.cfranc.irc.ui.SimpleChatServerApp" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/ui/SimpleChatServerApp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="221" x="1590" y="196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.cfranc.irc.ui.SimpleChatFrameServer" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/ui/SimpleChatFrameServer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="485" x="1328" y="659"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.cfranc.irc.ui.ConnectionPanel" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/ui/ConnectionPanel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="201" x="443" y="196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="com.cfranc.irc.server.BroadcastThread" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/server/BroadcastThread.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="248" x="2310" y="196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.cfranc.irc.ui.SimpleChatFrameClient.SendAction" 
+    project="FisrtIRCStarterWithUI" file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/ui/SimpleChatFrameClient.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="194" x="1086" y="1387"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.cfranc.irc.ui.Messages" project="FisrtIRCStarterWithUI" 
+    file="/FisrtIRCStarterWithUI/src/com/cfranc/irc/ui/Messages.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="213" x="684" y="196"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="18">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <association id="19">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="20" name="frame"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="22">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="23" name="clientConnectThread"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="25">    
+    <bendpoint x="984" y="1076"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="8"/>  
+  </nesting>  
+  <generalization id="26">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="27">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="28" name="user"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="30">    
+    <bendpoint x="904" y="1158"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </nesting>  
+  <association id="31">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="32" name="clientToServerThread"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <nesting id="35">    
+    <bendpoint x="1324" y="1192"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="16"/>  
+  </nesting>  
+  <association id="36">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="37" name="frame"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="39">    
+    <bendpoint x="1201" y="1112"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="40" name="sendAction"/>      
+      <multiplicity id="41" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="42">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="43">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="44" name="clientTreadsMap"/>      
+      <multiplicity id="45" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="47" name="lockAction"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="50" name="sender"/>      
+      <multiplicity id="51" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
