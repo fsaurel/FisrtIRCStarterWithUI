@@ -22,6 +22,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.cfranc.irc.client.ClientToServerThread;
 import com.cfranc.irc.server.ClientConnectThread;
+import javax.swing.JButton;
 
 public class SimpleChatClientApp {
     static String[] ConnectOptionNames = { "Connect" };	
