@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -13,7 +14,7 @@ import javax.swing.GroupLayout;
 
 
 
-public class NewUserIHM extends javax.swing.JFrame {
+public class NewUserIHM extends JDialog {
 
     /**
      * Creates new form NewJFrame
@@ -59,7 +60,7 @@ public class NewUserIHM extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Pseudo : ");
 

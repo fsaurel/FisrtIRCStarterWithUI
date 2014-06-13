@@ -1,7 +1,9 @@
 package com.cfranc.irc.ui;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Frame;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
@@ -22,6 +25,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import com.cfranc.irc.client.ClientToServerThread;
 import com.cfranc.irc.server.ClientConnectThread;
+
 import javax.swing.JButton;
 
 public class SimpleChatClientApp {
@@ -125,15 +129,32 @@ public class SimpleChatClientApp {
 	}
 	
     void displayConnectionDialog() {
+    	
+    	Frame frame = new Frame();
     	ConnectionPanel connectionPanel=new ConnectionPanel();
-		if (JOptionPane.showOptionDialog(null, connectionPanel, ConnectTitle,
-				JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-				null, ConnectOptionNames, ConnectOptionNames[0]) == 0) {
-			serverPort=Integer.parseInt(connectionPanel.getServerPortField().getText());
-			serverName=connectionPanel.getServerField().getText();
-			clientName=connectionPanel.getUserNameField().getText();
-			clientPwd=connectionPanel.getPasswordField().getText();
-		}
+
+   
+    	final JDialog dialog = new JDialog(frame,	"Connexion",true);
+
+    	
+    	dialog.setContentPane(connectionPanel);
+    	dialog.setSize(new Dimension(300,300));
+
+    	
+    	
+    	
+    	dialog.setVisible(true);
+
+    	
+    	
+//		if (JOptionPane.showOptionDialog(null, connectionPanel, ConnectTitle,
+//				JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+//				null, ConnectOptionNames, ConnectOptionNames[0]) == 0) {
+//			serverPort=Integer.parseInt(connectionPanel.getServerPortField().getText());
+//			serverName=connectionPanel.getServerField().getText();
+//			clientName=connectionPanel.getUserNameField().getText();
+//			clientPwd=connectionPanel.getPasswordField().getText();
+//		}
 		
 		
 		
@@ -165,6 +186,7 @@ public class SimpleChatClientApp {
 				try {
 					app.displayConnectionDialog();
 
+					
 					app.connectClient();
 					
 					app.displayClient();

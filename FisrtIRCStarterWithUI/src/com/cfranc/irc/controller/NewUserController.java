@@ -18,6 +18,7 @@ import com.cfranc.irc.ui.NewUserIHM;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 
 public class NewUserController {
@@ -96,6 +97,7 @@ public class NewUserController {
 
 
 		NewUserIHM myihm = new NewUserIHM();
+
 		myihm.jLabel4.setText("Password : ");
 		NewUserController mytestihm = new NewUserController(myihm);
 		myihm.setVisible(true);

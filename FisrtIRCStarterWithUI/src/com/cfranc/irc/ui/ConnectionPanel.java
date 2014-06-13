@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.activation.MailcapCommandMap;
 import javax.swing.BoxLayout;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -75,7 +76,10 @@ public class ConnectionPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				NewUserIHM newuserihm = new NewUserIHM();
-				NewUserController newusercontroller = new NewUserController(newuserihm);		
+				NewUserController newusercontroller = new NewUserController(newuserihm);
+				
+
+				
 				newuserihm.setVisible(true);
 
 				
@@ -84,34 +88,44 @@ public class ConnectionPanel extends JPanel {
 			}
 		});
 	    
+	    JButton btnNewButton = new JButton("Connexion");
+	    
+	    btnNewButton.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("connexion de l'utilisateur");
+	    		
+	    	}
+	    });
+	    
 	    GroupLayout groupLayout = new GroupLayout(this);
 	    groupLayout.setHorizontalGroup(
 	    	groupLayout.createParallelGroup(Alignment.LEADING)
 	    		.addGroup(groupLayout.createSequentialGroup()
-	    			.addContainerGap(116, Short.MAX_VALUE)
-	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-	    				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+	    			.addContainerGap(144, Short.MAX_VALUE)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+	    				.addComponent(userNameLabel)
+	    				.addComponent(passwordLabel)
+	    				.addGroup(groupLayout.createSequentialGroup()
 	    					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-	    						.addComponent(userNameLabel)
-	    						.addComponent(passwordLabel)
-	    						.addGroup(groupLayout.createSequentialGroup()
-	    							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-	    								.addComponent(serverLabel)
-	    								.addComponent(serverPortLabel))
-	    							.addPreferredGap(ComponentPlacement.RELATED)))
-	    					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-	    						.addComponent(namePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	    						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	    						.addComponent(serverPortField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	    						.addComponent(userNameField, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-	    						.addGroup(groupLayout.createSequentialGroup()
-	    							.addGap(33)
-	    							.addComponent(serverField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-	    					.addPreferredGap(ComponentPlacement.RELATED)
-	    					.addComponent(fieldPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-	    				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-	    					.addComponent(btnNewUser)
-	    					.addGap(28))))
+	    						.addComponent(serverLabel)
+	    						.addComponent(serverPortLabel))
+	    					.addPreferredGap(ComponentPlacement.RELATED)))
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(namePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(serverPortField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(userNameField, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGap(33)
+	    					.addComponent(serverField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+	    			.addPreferredGap(ComponentPlacement.RELATED)
+	    			.addComponent(fieldPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGap(63)
+	    			.addComponent(btnNewButton)
+	    			.addPreferredGap(ComponentPlacement.RELATED)
+	    			.addComponent(btnNewUser)
+	    			.addContainerGap(65, Short.MAX_VALUE))
 	    );
 	    groupLayout.setVerticalGroup(
 	    	groupLayout.createParallelGroup(Alignment.LEADING)
@@ -141,9 +155,11 @@ public class ConnectionPanel extends JPanel {
 	    				.addGroup(groupLayout.createSequentialGroup()
 	    					.addGap(5)
 	    					.addComponent(fieldPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-	    			.addGap(18)
-	    			.addComponent(btnNewUser)
-	    			.addContainerGap(61, Short.MAX_VALUE))
+	    			.addGap(59)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+	    				.addComponent(btnNewButton)
+	    				.addComponent(btnNewUser))
+	    			.addContainerGap(20, Short.MAX_VALUE))
 	    );
 	    setLayout(groupLayout);	 
 	    setPreferredSize(new Dimension(300,200));
