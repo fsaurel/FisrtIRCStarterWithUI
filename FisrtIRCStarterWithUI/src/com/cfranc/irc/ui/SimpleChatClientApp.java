@@ -134,6 +134,9 @@ public class SimpleChatClientApp {
 			clientName=connectionPanel.getUserNameField().getText();
 			clientPwd=connectionPanel.getPasswordField().getText();
 		}
+		
+		
+		
 	}
     
     private void connectClient() {

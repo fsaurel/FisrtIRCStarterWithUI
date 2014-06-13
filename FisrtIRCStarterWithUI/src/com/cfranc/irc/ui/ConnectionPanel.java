@@ -45,7 +45,7 @@ public class ConnectionPanel extends JPanel {
 	public ConnectionPanel() {
 	
 	
-	    JPanel connectionPanel = new JPanel(false);
+	    final JPanel connectionPanel = new JPanel(false);
 		connectionPanel.setLayout(new BoxLayout(connectionPanel,
 							BoxLayout.X_AXIS));
 	
@@ -77,6 +77,7 @@ public class ConnectionPanel extends JPanel {
 				NewUserIHM newuserihm = new NewUserIHM();
 				NewUserController newusercontroller = new NewUserController(newuserihm);		
 				newuserihm.setVisible(true);
+
 				
 				
 				

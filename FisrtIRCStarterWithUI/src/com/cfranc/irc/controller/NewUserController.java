@@ -25,10 +25,6 @@ public class NewUserController {
 
 	public NewUserIHM newuserihm;
 	public Connection connection;
-	/**
-	 * @wbp.nonvisual location=290,281
-	 */
-	private static final JButton button = new JButton("New button");
 
 
 	public NewUserController(NewUserIHM newuserihm) {
@@ -53,7 +49,7 @@ public class NewUserController {
 				connecteBase("jdbc:sqlite:Z:/04_TP/FSAU/BDD/IRC.SQLITE");
 				System.out.println("la connexion est : " + connection.toString());
 				Statement statement = connection.createStatement();
-				String myrequete = "INSERT INTO USERS (PSEUDO, NOM, PRENOM, DATENAISSANCE, IMAGEAVATAR) VALUES ('" + newuserihm.jTextField1.getText() + "', '" + newuserihm.jTextField2.getText() + "', '" + newuserihm.jTextField3.getText() + "', '" + newuserihm.jTextField4.getText() + "', '" + newuserihm.myfilechooser.getSelectedFile().toString() + "')";
+				String myrequete = "INSERT INTO USERS (PSEUDO, NOM, PRENOM, PASSWORD, IMAGEAVATAR) VALUES ('" + newuserihm.jTextField1.getText() + "', '" + newuserihm.jTextField2.getText() + "', '" + newuserihm.jTextField3.getText() + "', '" + newuserihm.jTextField4.getText() + "', '" + newuserihm.myfilechooser.getSelectedFile().toString() + "')";
 				System.out.println(myrequete);
 				statement.executeUpdate(myrequete);
 
@@ -75,7 +71,7 @@ public class NewUserController {
 			newuserihm.dispose();
 		}
 	}
-	
+
 	public class parcourirButton implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -86,10 +82,8 @@ public class NewUserController {
 			Icon image = new ImageIcon( newuserihm.myfilechooser.getSelectedFile().toString());
 			//newuserihm.jLabel6.setText(newuserihm.myfilechooser.getSelectedFile().toString());
 			newuserihm.jLabel6.setIcon( image );
-			
-			
-			
-			
+
+
 		}
 	}
 
@@ -99,7 +93,10 @@ public class NewUserController {
 
 	public static void main(String[] args) {
 
+
+
 		NewUserIHM myihm = new NewUserIHM();
+		myihm.jLabel4.setText("Password : ");
 		NewUserController mytestihm = new NewUserController(myihm);
 		myihm.setVisible(true);
 
