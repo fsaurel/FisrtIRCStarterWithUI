@@ -108,8 +108,7 @@ public class ConnectionPanel extends JDialog {
 	    btnNewButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("connexion de l'utilisateur");
-	    		SimpleChatClientApp.app.connectClient();
-	    		SimpleChatClientApp.app.displayClient();
+
 	    		
 	    	}
 	    });
@@ -119,7 +118,7 @@ public class ConnectionPanel extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				NewUserIHM newuserihm = new NewUserIHM();
+				NewUserIHM newuserihm = new NewUserIHM(ConnectionPanel.this);
 				NewUserController newusercontroller = new NewUserController(newuserihm);
 				newuserihm.setVisible(true);
 			}
