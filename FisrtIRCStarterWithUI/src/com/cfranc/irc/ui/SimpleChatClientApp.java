@@ -29,6 +29,7 @@ import com.cfranc.irc.server.ClientConnectThread;
 import javax.swing.JButton;
 
 public class SimpleChatClientApp {
+	final static SimpleChatClientApp app = new SimpleChatClientApp();
     static String[] ConnectOptionNames = { "Connect" };	
     static String   ConnectTitle = "Connection Information";
     Socket socketClientServer;
@@ -122,29 +123,28 @@ public class SimpleChatClientApp {
 		});
 	}
 	
+	
+	
 	public void hideClient() {
 		
 		// Init GUI
 		((JFrame)this.frame).setVisible(false);
 	}
 	
+
+	
     void displayConnectionDialog() {
     	
-    	Frame frame = new Frame();
     	ConnectionPanel connectionPanel=new ConnectionPanel();
 
-   
-    	final JDialog dialog = new JDialog(frame,	"Connexion",true);
+    	//final JDialog dialog = new JDialog(connectionPanel,	"Connexion",true);   	
+    	//    	dialog.set setContentPane(connectionPanel);
+
+    	connectionPanel.setSize(new Dimension(300,200));
+    	connectionPanel.setVisible(true);
 
     	
-    	dialog.setContentPane(connectionPanel);
-    	dialog.setSize(new Dimension(300,300));
-
     	
-    	
-    	
-    	dialog.setVisible(true);
-
     	
     	
 //		if (JOptionPane.showOptionDialog(null, connectionPanel, ConnectTitle,
@@ -156,11 +156,9 @@ public class SimpleChatClientApp {
 //			clientPwd=connectionPanel.getPasswordField().getText();
 //		}
 		
-		
-		
 	}
     
-    private void connectClient() {
+    public void connectClient() {
 		System.out.println("Establishing connection. Please wait ...");
 		try {
 			socketClientServer = new Socket(this.serverName, this.serverPort);
@@ -180,16 +178,16 @@ public class SimpleChatClientApp {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		final SimpleChatClientApp app = new SimpleChatClientApp();
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					app.displayConnectionDialog();
 
 					
-					app.connectClient();
+					//app.connectClient();
 					
-					app.displayClient();
+					//app.displayClient();
 
 				} catch (Exception e) {
 					e.printStackTrace();
