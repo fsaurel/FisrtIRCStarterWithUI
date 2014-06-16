@@ -108,7 +108,7 @@ public class ConnectionPanel extends JDialog {
 	    btnNewButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("connexion de l'utilisateur");
-
+	    		ConnectionPanel.this.dispose();
 	    		
 	    	}
 	    });
