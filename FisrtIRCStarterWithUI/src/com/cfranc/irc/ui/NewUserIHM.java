@@ -83,7 +83,7 @@ public class NewUserIHM extends JDialog {
 
         //jTextField3.setText("jTextField3");
 
-        jLabel4.setText("Date de naissance : ");
+        jLabel4.setText("Password : ");
 
        // jTextField4.setText("jTextField4");
 
