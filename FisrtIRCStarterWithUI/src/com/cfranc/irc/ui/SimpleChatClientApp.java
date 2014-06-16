@@ -9,6 +9,11 @@ import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 import javax.swing.DefaultListModel;
@@ -28,6 +33,8 @@ import com.cfranc.irc.server.ClientConnectThread;
 
 import javax.swing.JButton;
 
+import org.sqlite.JDBC;
+
 public class SimpleChatClientApp {
 
     static String[] ConnectOptionNames = { "Connect" };	
@@ -37,6 +44,7 @@ public class SimpleChatClientApp {
     String serverName;
     String clientName;
     String clientPwd;
+    public static boolean connecok; 
     
 	public SimpleChatFrameClient frame;
 	public StyledDocument documentModel=new DefaultStyledDocument();
@@ -148,6 +156,17 @@ public class SimpleChatClientApp {
 		serverName=connectionPanel.getServerField().getText();
 		clientName=connectionPanel.getUserNameField().getText();
 		clientPwd=connectionPanel.getPasswordField().getText();
+		
+		try {
+			if (verifLoginUtilisateur(clientName, clientPwd) == false){
+				JOptionPane.showMessageDialog(connectionPanel, "Mot de passe incorrect !", "Attention", JOptionPane.ERROR_MESSAGE);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
     	
 
@@ -192,9 +211,6 @@ public class SimpleChatClientApp {
 					app.displayConnectionDialog();
 					System.out.println("app.displayConnectionDialog();");
 					
-					
-					
-					
 					app.connectClient();
 					System.out.println("app.connectClient();");
 					
@@ -228,6 +244,37 @@ public class SimpleChatClientApp {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean verifLoginUtilisateur(String clientName, String clientPasswd) throws SQLException{
+		
+		Connection connection = null;
+
+		
+		if(JDBC.isValidURL("jdbc:sqlite:Z:/04_TP/FSAU/BDD/IRC.SQLITE")) {
+			connection = DriverManager.getConnection("jdbc:sqlite:Z:/04_TP/FSAU/BDD/IRC.SQLITE");
+		}
+		
+
+		System.out.println("la connexion est : " + connection.toString());
+		Statement statement = connection.createStatement();
+		String myrequete = "SELECT COUNT(*)  FROM USERS WHERE PSEUDO = '" + clientName + "' AND PASSWORD = '" + clientPasswd + "'";
+		System.out.println(myrequete);
+		ResultSet rs = statement.executeQuery(myrequete);
+		
+	
+		if (rs.getInt(1) == 1){
+			System.out.println("Mot de passe OK");
+			connecok = true;
+		} else {
+			System.out.println("Mot de passe KO");
+			connecok = false;
+		}
+		
+		
+		return connecok;
+
+		
 	}
 
 }
