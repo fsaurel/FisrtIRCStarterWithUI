@@ -18,8 +18,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
 import com.cfranc.irc.controller.NewUserController;
+import java.awt.BorderLayout;
 
-public class ConnectionPanel extends JPanel {
+public class ConnectionPanel extends JDialog {
 
     private JTextField serverPortField;
     private JTextField serverField;
@@ -49,119 +50,80 @@ public class ConnectionPanel extends JPanel {
 	    final JPanel connectionPanel = new JPanel(false);
 		connectionPanel.setLayout(new BoxLayout(connectionPanel,
 							BoxLayout.X_AXIS));
-	
-		JPanel namePanel = new JPanel(false);
-		namePanel.setLayout(new GridLayout(0, 1));
-	
-		JPanel fieldPanel = new JPanel(false);
-		fieldPanel.setLayout(new GridLayout(0, 1));
+	    
+	    GroupLayout groupLayout = new GroupLayout(connectionPanel);
+	    groupLayout.setHorizontalGroup(
+	    	groupLayout.createParallelGroup(Alignment.LEADING)
+	    		.addGap(0, 0, Short.MAX_VALUE)
+	    );
+	    groupLayout.setVerticalGroup(
+	    	groupLayout.createParallelGroup(Alignment.LEADING)
+	    		.addGap(0, 213, Short.MAX_VALUE)
+	    );
+//	    setLayout(groupLayout);	 
+	    getContentPane().add(connectionPanel, BorderLayout.WEST);
+	    
+	    JPanel panel = new JPanel();
+	    getContentPane().add(panel, BorderLayout.NORTH);
 	    JLabel userNameLabel = new JLabel("User name: ", JLabel.RIGHT);
+	    panel.add(userNameLabel);
 	    userNameField = new JTextField("guest");
+	    panel.add(userNameField);
 	    
 	        JLabel passwordLabel = new JLabel("Password: ", JLabel.RIGHT);
+	        panel.add(passwordLabel);
+	        passwordField = new JPasswordField("trustworthy");
+	        panel.add(passwordField);
 	    
-	        JLabel serverLabel = new JLabel("Server name:", JLabel.RIGHT);
-	    
-	        JLabel serverPortLabel = new JLabel("Port: ", JLabel.RIGHT);
-	    passwordField = new JPasswordField("trustworthy");
-	    serverField = new JTextField("localhost");
-	    serverPortField = new JTextField("4567");
+	    JPanel panel_1 = new JPanel();
+	    getContentPane().add(panel_1, BorderLayout.SOUTH);
 	    
 	    JButton btnNewUser = new JButton("New User");
+	    panel_1.add(btnNewUser);
+	    
+	    JButton btnNewButton = new JButton("Connexion");
+	    panel_1.add(btnNewButton);
+	    
+	    JPanel panel_2 = new JPanel();
+	    getContentPane().add(panel_2, BorderLayout.CENTER);
+	    
+	        JLabel serverLabel = new JLabel("Server name:", JLabel.RIGHT);
+	        panel_2.add(serverLabel);
+	        serverField = new JTextField("localhost");
+	        panel_2.add(serverField);
+	        
+	            JLabel serverPortLabel = new JLabel("Port: ", JLabel.RIGHT);
+	            panel_2.add(serverPortLabel);
+	            serverPortField = new JTextField("4567");
+	            panel_2.add(serverPortField);
+	            
+	            	JPanel fieldPanel = new JPanel(false);
+	            	panel_2.add(fieldPanel);
+	            	fieldPanel.setLayout(new GridLayout(0, 1));
+	            	
+	            		JPanel namePanel = new JPanel(false);
+	            		panel_2.add(namePanel);
+	            		namePanel.setLayout(new GridLayout(0, 1));
+	    
+	    btnNewButton.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		System.out.println("connexion de l'utilisateur");
+	    		SimpleChatClientApp.app.connectClient();
+	    		SimpleChatClientApp.app.displayClient();
+	    		
+	    	}
+	    });
 	    
 	    
 	    btnNewUser.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				NewUserIHM newuserihm = new NewUserIHM();
 				NewUserController newusercontroller = new NewUserController(newuserihm);
-				
-
-				
 				newuserihm.setVisible(true);
-
-				
-				
-				
 			}
 		});
-	    
-	    JButton btnNewButton = new JButton("Connexion");
-	    
-	    btnNewButton.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("connexion de l'utilisateur");
-	    		
-	    	}
-	    });
-	    
-	    GroupLayout groupLayout = new GroupLayout(this);
-	    groupLayout.setHorizontalGroup(
-	    	groupLayout.createParallelGroup(Alignment.LEADING)
-	    		.addGroup(groupLayout.createSequentialGroup()
-	    			.addContainerGap(144, Short.MAX_VALUE)
-	    			.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-	    				.addComponent(userNameLabel)
-	    				.addComponent(passwordLabel)
-	    				.addGroup(groupLayout.createSequentialGroup()
-	    					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-	    						.addComponent(serverLabel)
-	    						.addComponent(serverPortLabel))
-	    					.addPreferredGap(ComponentPlacement.RELATED)))
-	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-	    				.addComponent(namePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	    				.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	    				.addComponent(serverPortField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	    				.addComponent(userNameField, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-	    				.addGroup(groupLayout.createSequentialGroup()
-	    					.addGap(33)
-	    					.addComponent(serverField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-	    			.addPreferredGap(ComponentPlacement.RELATED)
-	    			.addComponent(fieldPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-	    		.addGroup(groupLayout.createSequentialGroup()
-	    			.addGap(63)
-	    			.addComponent(btnNewButton)
-	    			.addPreferredGap(ComponentPlacement.RELATED)
-	    			.addComponent(btnNewUser)
-	    			.addContainerGap(65, Short.MAX_VALUE))
-	    );
-	    groupLayout.setVerticalGroup(
-	    	groupLayout.createParallelGroup(Alignment.LEADING)
-	    		.addGroup(groupLayout.createSequentialGroup()
-	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-	    				.addGroup(groupLayout.createSequentialGroup()
-	    					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-	    						.addComponent(userNameLabel)
-	    						.addComponent(userNameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-	    					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-	    						.addGroup(groupLayout.createSequentialGroup()
-	    							.addGap(3)
-	    							.addComponent(namePanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-	    						.addGroup(groupLayout.createSequentialGroup()
-	    							.addPreferredGap(ComponentPlacement.RELATED)
-	    							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-	    								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	    								.addComponent(passwordLabel))
-	    							.addPreferredGap(ComponentPlacement.RELATED)
-	    							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-	    								.addComponent(serverField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	    								.addComponent(serverLabel))))
-	    					.addPreferredGap(ComponentPlacement.RELATED)
-	    					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-	    						.addComponent(serverPortField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-	    						.addComponent(serverPortLabel)))
-	    				.addGroup(groupLayout.createSequentialGroup()
-	    					.addGap(5)
-	    					.addComponent(fieldPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-	    			.addGap(59)
-	    			.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-	    				.addComponent(btnNewButton)
-	    				.addComponent(btnNewUser))
-	    			.addContainerGap(20, Short.MAX_VALUE))
-	    );
-	    setLayout(groupLayout);	 
 	    setPreferredSize(new Dimension(300,200));
 	}
 
