@@ -9,6 +9,7 @@ import javax.activation.MailcapCommandMap;
 import javax.swing.BoxLayout;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.GroupLayout;
@@ -18,7 +19,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
 import com.cfranc.irc.controller.NewUserController;
+
 import java.awt.BorderLayout;
+import java.sql.SQLException;
 
 public class ConnectionPanel extends JDialog {
 
@@ -26,7 +29,7 @@ public class ConnectionPanel extends JDialog {
     private JTextField serverField;
     private JTextField userNameField;
     private JPasswordField passwordField;
-    
+    private JButton btnNewButton = new JButton("Connexion");
     
 
 	public JTextField getServerPortField() {
@@ -67,12 +70,12 @@ public class ConnectionPanel extends JDialog {
 	    getContentPane().add(panel, BorderLayout.NORTH);
 	    JLabel userNameLabel = new JLabel("User name: ", JLabel.RIGHT);
 	    panel.add(userNameLabel);
-	    userNameField = new JTextField("guest");
+	    userNameField = new JTextField("UTILISATEUR");
 	    panel.add(userNameField);
 	    
 	        JLabel passwordLabel = new JLabel("Password: ", JLabel.RIGHT);
 	        panel.add(passwordLabel);
-	        passwordField = new JPasswordField("trustworthy");
+	        passwordField = new JPasswordField("PWD");
 	        panel.add(passwordField);
 	    
 	    JPanel panel_1 = new JPanel();
@@ -81,7 +84,7 @@ public class ConnectionPanel extends JDialog {
 	    JButton btnNewUser = new JButton("New User");
 	    panel_1.add(btnNewUser);
 	    
-	    JButton btnNewButton = new JButton("Connexion");
+	    
 	    panel_1.add(btnNewButton);
 	    
 	    JPanel panel_2 = new JPanel();
@@ -105,13 +108,6 @@ public class ConnectionPanel extends JDialog {
 	            		panel_2.add(namePanel);
 	            		namePanel.setLayout(new GridLayout(0, 1));
 	    
-	    btnNewButton.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) {
-	    		System.out.println("connexion de l'utilisateur");
-	    		ConnectionPanel.this.dispose();
-	    		
-	    	}
-	    });
 	    
 	    
 	    btnNewUser.addActionListener(new ActionListener() {
@@ -132,4 +128,9 @@ public class ConnectionPanel extends JDialog {
 	public JPasswordField getPasswordField() {
 		return passwordField;
 	}
+	
+	public void addConnexionListener(ActionListener listenforconnexion){
+		btnNewButton.addActionListener(listenforconnexion);
+	}
+	
 }
