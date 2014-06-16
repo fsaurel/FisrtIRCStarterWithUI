@@ -83,7 +83,7 @@ public class NewUserIHM extends JDialog {
 
         //jTextField3.setText("jTextField3");
 
-        jLabel4.setText("Date de naissance : ");
+        jLabel4.setText("Password : ");
 
        // jTextField4.setText("jTextField4");
 
@@ -184,6 +184,8 @@ public class NewUserIHM extends JDialog {
         getContentPane().setLayout(layout);
 
         pack();
+        
+        setBounds(100,100,600,400);
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         

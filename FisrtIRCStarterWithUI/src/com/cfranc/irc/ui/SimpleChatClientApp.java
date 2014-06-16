@@ -4,11 +4,18 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 import javax.swing.DefaultListModel;
@@ -28,6 +35,10 @@ import com.cfranc.irc.server.ClientConnectThread;
 
 import javax.swing.JButton;
 
+import org.sqlite.JDBC;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+
 public class SimpleChatClientApp {
 
     static String[] ConnectOptionNames = { "Connect" };	
@@ -37,6 +48,8 @@ public class SimpleChatClientApp {
     String serverName;
     String clientName;
     String clientPwd;
+    public static boolean connecok; 
+    public ConnectionPanel connectionPanel=new ConnectionPanel();
     
 	public SimpleChatFrameClient frame;
 	public StyledDocument documentModel=new DefaultStyledDocument();
@@ -135,19 +148,21 @@ public class SimpleChatClientApp {
 	
     void displayConnectionDialog() {
     	
-    	ConnectionPanel connectionPanel=new ConnectionPanel();
+    	
     	connectionPanel.setModal(true);
-
+    	connectionPanel.addConnexionListener(new connexionButton());
     	//final JDialog dialog = new JDialog(connectionPanel,	"Connexion",true);   	
     	//    	dialog.set setContentPane(connectionPanel);
 
-    	connectionPanel.setSize(new Dimension(300,200));
+    	connectionPanel.setSize(new Dimension(600,400));
+    	
+    	JPanel panel = new JPanel();
+    	connectionPanel.getContentPane().add(panel, BorderLayout.EAST);
     	connectionPanel.setVisible(true);
     	
-		serverPort=Integer.parseInt(connectionPanel.getServerPortField().getText());
-		serverName=connectionPanel.getServerField().getText();
-		clientName=connectionPanel.getUserNameField().getText();
-		clientPwd=connectionPanel.getPasswordField().getText();
+    	
+
+		
 
     	
 
@@ -188,27 +203,26 @@ public class SimpleChatClientApp {
 			public void run() {
 				
 				try {
-					
+
 					app.displayConnectionDialog();
 					System.out.println("app.displayConnectionDialog();");
-					
-					
-					
-					
-					app.connectClient();
-					System.out.println("app.connectClient();");
-					
-					app.displayClient();
-					System.out.println("app.displayClient();");
+
+					if (connecok){
+
+						app.connectClient();
+						System.out.println("app.connectClient();");
+
+						app.displayClient();
+						System.out.println("app.displayClient();");
+					}
 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 
-			
 		});
-		
+
 		Scanner sc=new Scanner(System.in);
 		String line="";
 		while(!line.equals(".bye")){
@@ -229,6 +243,65 @@ public class SimpleChatClientApp {
 			e.printStackTrace();
 		}
 	}
+	
+	public boolean verifLoginUtilisateur() throws SQLException{
+		
+		Connection connection = null;
+		
+		serverPort=Integer.parseInt(connectionPanel.getServerPortField().getText());
+		serverName=connectionPanel.getServerField().getText();
+		clientName=connectionPanel.getUserNameField().getText();
+		clientPwd=connectionPanel.getPasswordField().getText();
 
+		
+		if(JDBC.isValidURL("jdbc:sqlite:Z:/04_TP/FSAU/BDD/IRC.SQLITE")) {
+			connection = DriverManager.getConnection("jdbc:sqlite:Z:/04_TP/FSAU/BDD/IRC.SQLITE");
+		}
+		
+
+		System.out.println("la connexion est : " + connection.toString());
+		Statement statement = connection.createStatement();
+		String myrequete = "SELECT COUNT(*)  FROM USERS WHERE PSEUDO = '" + clientName + "' AND PASSWORD = '" + clientPwd + "'";
+		System.out.println(myrequete);
+		ResultSet rs = statement.executeQuery(myrequete);
+		
+	
+		if (rs.getInt(1) == 1){
+			System.out.println("Mot de passe OK");
+			connecok = true;
+		} else {
+			System.out.println("Mot de passe KO");
+			connecok = false;
+		}
+		
+		
+		return connecok;
+
+		
+	}
+
+	public class connexionButton implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+
+			try {
+				verifLoginUtilisateur();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			if (connecok){
+				connectionPanel.dispose();
+			}else {
+				JOptionPane.showMessageDialog(connectionPanel, "Le mot de passe n'est pas correct", "alert", JOptionPane.ERROR_MESSAGE);
+			}
+			
+			
+
+
+		}
+	}
+	
 }
+
 

@@ -53,10 +53,21 @@ public class NewUserController {
 				String myrequete = "INSERT INTO USERS (PSEUDO, NOM, PRENOM, PASSWORD, IMAGEAVATAR) VALUES ('" + newuserihm.jTextField1.getText() + "', '" + newuserihm.jTextField2.getText() + "', '" + newuserihm.jTextField3.getText() + "', '" + newuserihm.jTextField4.getText() + "', '" + newuserihm.myfilechooser.getSelectedFile().toString() + "')";
 				System.out.println(myrequete);
 				statement.executeUpdate(myrequete);
+				
+				newuserihm.dispose();
+				
 
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			}
+			finally {
+				try {
+					connection.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		}
 	}
@@ -100,6 +111,7 @@ public class NewUserController {
 
 		myihm.jLabel4.setText("Password : ");
 		NewUserController mytestihm = new NewUserController(myihm);
+		
 		myihm.setVisible(true);
 
 	}
