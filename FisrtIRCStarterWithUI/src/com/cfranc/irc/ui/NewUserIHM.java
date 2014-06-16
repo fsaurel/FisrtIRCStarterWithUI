@@ -184,6 +184,8 @@ public class NewUserIHM extends JDialog {
         getContentPane().setLayout(layout);
 
         pack();
+        
+        setBounds(100,100,600,400);
     }// </editor-fold>                        
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         

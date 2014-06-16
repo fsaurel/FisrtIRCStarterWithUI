@@ -36,7 +36,7 @@ public class SimpleChatFrameServer extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		this.setBounds(100, 100, 702, 339);
+		this.setBounds(100, 100, 600, 400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JScrollPane scrollPane = new JScrollPane();

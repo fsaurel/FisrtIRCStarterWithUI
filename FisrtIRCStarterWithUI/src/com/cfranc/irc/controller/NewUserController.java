@@ -111,6 +111,7 @@ public class NewUserController {
 
 		myihm.jLabel4.setText("Password : ");
 		NewUserController mytestihm = new NewUserController(myihm);
+		
 		myihm.setVisible(true);
 
 	}

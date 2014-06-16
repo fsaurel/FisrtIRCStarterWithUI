@@ -36,6 +36,8 @@ import com.cfranc.irc.server.ClientConnectThread;
 import javax.swing.JButton;
 
 import org.sqlite.JDBC;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
 public class SimpleChatClientApp {
 
@@ -152,7 +154,10 @@ public class SimpleChatClientApp {
     	//final JDialog dialog = new JDialog(connectionPanel,	"Connexion",true);   	
     	//    	dialog.set setContentPane(connectionPanel);
 
-    	connectionPanel.setSize(new Dimension(300,200));
+    	connectionPanel.setSize(new Dimension(600,400));
+    	
+    	JPanel panel = new JPanel();
+    	connectionPanel.getContentPane().add(panel, BorderLayout.EAST);
     	connectionPanel.setVisible(true);
     	
     	
@@ -198,24 +203,26 @@ public class SimpleChatClientApp {
 			public void run() {
 				
 				try {
-					
+
 					app.displayConnectionDialog();
 					System.out.println("app.displayConnectionDialog();");
-					
-					app.connectClient();
-					System.out.println("app.connectClient();");
-					
-					app.displayClient();
-					System.out.println("app.displayClient();");
+
+					if (connecok){
+
+						app.connectClient();
+						System.out.println("app.connectClient();");
+
+						app.displayClient();
+						System.out.println("app.displayClient();");
+					}
 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 
-			
 		});
-		
+
 		Scanner sc=new Scanner(System.in);
 		String line="";
 		while(!line.equals(".bye")){
