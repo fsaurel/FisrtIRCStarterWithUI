@@ -1,16 +1,14 @@
 package com.cfranc.irc.ui;
 
-import java.awt.Dimension;
+import java.awt.Dialog;
 import java.awt.event.ActionListener;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.GroupLayout;
 
 
 
@@ -38,7 +36,13 @@ public class NewUserIHM extends JDialog {
 
 	
 	
+    public NewUserIHM(Dialog owner) {
+    	super(owner, true);
+        initComponents();
+    }
+    
     public NewUserIHM() {
+    	super();
         initComponents();
     }
 

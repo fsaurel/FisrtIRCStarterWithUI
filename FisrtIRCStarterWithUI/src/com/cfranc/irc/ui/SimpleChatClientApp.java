@@ -29,7 +29,7 @@ import com.cfranc.irc.server.ClientConnectThread;
 import javax.swing.JButton;
 
 public class SimpleChatClientApp {
-	final static SimpleChatClientApp app = new SimpleChatClientApp();
+
     static String[] ConnectOptionNames = { "Connect" };	
     static String   ConnectTitle = "Connection Information";
     Socket socketClientServer;
@@ -38,7 +38,7 @@ public class SimpleChatClientApp {
     String clientName;
     String clientPwd;
     
-	private SimpleChatFrameClient frame;
+	public SimpleChatFrameClient frame;
 	public StyledDocument documentModel=new DefaultStyledDocument();
 	DefaultListModel<String> clientListModel=new DefaultListModel<String>();
 	DefaultMutableTreeNode racine=new DefaultMutableTreeNode();
@@ -136,16 +136,21 @@ public class SimpleChatClientApp {
     void displayConnectionDialog() {
     	
     	ConnectionPanel connectionPanel=new ConnectionPanel();
+    	connectionPanel.setModal(true);
 
     	//final JDialog dialog = new JDialog(connectionPanel,	"Connexion",true);   	
     	//    	dialog.set setContentPane(connectionPanel);
 
     	connectionPanel.setSize(new Dimension(300,200));
     	connectionPanel.setVisible(true);
+    	
+		serverPort=Integer.parseInt(connectionPanel.getServerPortField().getText());
+		serverName=connectionPanel.getServerField().getText();
+		clientName=connectionPanel.getUserNameField().getText();
+		clientPwd=connectionPanel.getPasswordField().getText();
 
     	
-    	
-    	
+
     	
 //		if (JOptionPane.showOptionDialog(null, connectionPanel, ConnectTitle,
 //				JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
@@ -178,16 +183,23 @@ public class SimpleChatClientApp {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
+		final SimpleChatClientApp app = new SimpleChatClientApp();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				
 				try {
+					
 					app.displayConnectionDialog();
-
+					System.out.println("app.displayConnectionDialog();");
 					
-					//app.connectClient();
 					
-					//app.displayClient();
+					
+					
+					app.connectClient();
+					System.out.println("app.connectClient();");
+					
+					app.displayClient();
+					System.out.println("app.displayClient();");
 
 				} catch (Exception e) {
 					e.printStackTrace();
