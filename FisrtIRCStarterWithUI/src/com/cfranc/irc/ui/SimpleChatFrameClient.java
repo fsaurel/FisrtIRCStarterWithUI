@@ -296,16 +296,24 @@ public class SimpleChatFrameClient extends JFrame {
 		JList<String> list = new JList<String>(listModel);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.addListSelectionListener(new ListSelectionListener() {
+			
+			
 			public void valueChanged(ListSelectionEvent e) {
 				int iFirstSelectedElement = ((JList) e.getSource()).getSelectedIndex();
 				if (iFirstSelectedElement >= 0 && iFirstSelectedElement < listModel.getSize()) {
 					senderName = listModel.getElementAt(iFirstSelectedElement);
 					getLblSender().setText(senderName);
+					
+					
+					
 				} else {
 					getLblSender().setText("?"); //$NON-NLS-1$
 				}
 			}
 		});
+		
+		
+		
 		list.setMinimumSize(new Dimension(100, 0));
 		splitPane.setLeftComponent(list);
 

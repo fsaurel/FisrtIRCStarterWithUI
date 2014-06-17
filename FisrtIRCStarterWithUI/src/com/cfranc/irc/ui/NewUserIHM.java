@@ -111,6 +111,8 @@ public class NewUserIHM extends JDialog {
         jButton2.setText("Annuler");
         
         btnParcourir = new JButton("Parcourir...");
+        
+        jLabel6.setToolTipText("Pas d'avatar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
