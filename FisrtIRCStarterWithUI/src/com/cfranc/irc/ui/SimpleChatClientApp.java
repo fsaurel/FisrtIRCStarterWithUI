@@ -295,7 +295,7 @@ public class SimpleChatClientApp {
 	    	connectionPanel.passwordField.setBackground(Color.white);
 	    }
 		
-		
+		//a
 		
 		
 		
