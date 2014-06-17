@@ -22,6 +22,9 @@ import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Style;
@@ -33,10 +36,13 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import com.cfranc.irc.client.ClientToServerThread;
 import com.cfranc.irc.server.ClientConnectThread;
 
+
 import javax.swing.JButton;
 
 import org.sqlite.JDBC;
+
 import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
 
 public class SimpleChatClientApp {
@@ -51,7 +57,7 @@ public class SimpleChatClientApp {
     public static int connecok; 
     public ConnectionPanel connectionPanel=new ConnectionPanel();
     
-	public SimpleChatFrameClient frame;
+	public  SimpleChatFrameClient frame;
 	public StyledDocument documentModel=new DefaultStyledDocument();
 	DefaultListModel<String> clientListModel=new DefaultListModel<String>();
 	DefaultMutableTreeNode racine=new DefaultMutableTreeNode();
@@ -83,6 +89,8 @@ public class SimpleChatClientApp {
 			
 	public SimpleChatClientApp(){
 		
+
+		
 	}
 	
 	public void displayClient() {
@@ -90,6 +98,10 @@ public class SimpleChatClientApp {
 		// Init GUI
 		this.frame=new SimpleChatFrameClient(clientToServerThread, clientListModel, documentModel);
 		this.frame.setTitle(this.frame.getTitle()+" : "+clientName+" connected to "+serverName+":"+serverPort);
+		
+		
+
+		
 		((JFrame)this.frame).setVisible(true);
 		this.frame.addWindowListener(new WindowListener() {
 					
@@ -160,6 +172,8 @@ public class SimpleChatClientApp {
     	connectionPanel.getContentPane().add(panel, BorderLayout.EAST);
     	connectionPanel.setVisible(true);
     	
+
+    	
     	
 
 		
@@ -185,6 +199,8 @@ public class SimpleChatClientApp {
 			// Start connection services
 			clientToServerThread=new ClientToServerThread(documentModel, clientListModel, racine, socketClientServer,clientName, clientPwd);
 			clientToServerThread.start();
+			
+
 
 			System.out.println("Connected: " + socketClientServer);
 		} catch (UnknownHostException uhe) {
@@ -214,6 +230,8 @@ public class SimpleChatClientApp {
 
 						app.displayClient();
 						System.out.println("app.displayClient();");
+						
+
 					}
 
 				} catch (Exception e) {
@@ -295,10 +313,7 @@ public class SimpleChatClientApp {
 	    	connectionPanel.passwordField.setBackground(Color.white);
 	    }
 		
-		//a
-		
-		
-		
+
 
 		if(JDBC.isValidURL("jdbc:sqlite:Z:/04_TP/FSAU/BDD/IRC.SQLITE")) {
 			connection = DriverManager.getConnection("jdbc:sqlite:Z:/04_TP/FSAU/BDD/IRC.SQLITE");
@@ -319,10 +334,6 @@ public class SimpleChatClientApp {
 			connecok = 1;
 			return 1 ;
 		}
-		
-
-
-		
 		
 	}
 
@@ -349,6 +360,7 @@ public class SimpleChatClientApp {
 	}
 
 	
+
 	
 	
 }

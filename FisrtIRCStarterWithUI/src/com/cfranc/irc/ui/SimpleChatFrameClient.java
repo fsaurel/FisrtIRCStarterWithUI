@@ -60,7 +60,8 @@ public class SimpleChatFrameClient extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private static Document documentModel;
-	private static ListModel<String> listModel;
+	public static ListModel<String> listModel;
+	public JList<String> list;
 	IfSenderModel sender;
 	private String senderName;
 
