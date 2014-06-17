@@ -329,18 +329,25 @@ public class SimpleChatClientApp {
 		System.out.println(myrequete);
 		ResultSet rs = statement.executeQuery(myrequete);
 		
+		
 		if (rs.getInt(1) == 1){
 			System.out.println("Mot de passe OK");
 			connecok = 2;
+			connection.close();
 			return 2;
+			
 		} else {
 			System.out.println("Mot de passe KO");
 			connecok = 1;
+			connection.close();
 			return 1 ;
 		}
 		
+		
+		
+		
 	}
-
+	
 	
 	
 	

@@ -57,6 +57,7 @@ public class NewUserController {
 					String myrequete = "INSERT INTO USERS (PSEUDO, NOM, PRENOM, PASSWORD, IMAGEAVATAR) VALUES ('" + newuserihm.jTextField1.getText() + "', '" + newuserihm.jTextField2.getText() + "', '" + newuserihm.jTextField3.getText() + "', '" + newuserihm.jTextField4.getText() + "', '" + newuserihm.myfilechooser.getSelectedFile().toString() + "')";
 					System.out.println(myrequete);
 					statement.executeUpdate(myrequete);
+					
 
 					newuserihm.dispose();
 
