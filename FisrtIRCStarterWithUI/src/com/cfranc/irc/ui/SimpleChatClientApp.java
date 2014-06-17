@@ -170,6 +170,10 @@ public class SimpleChatClientApp {
     	
     	JPanel panel = new JPanel();
     	connectionPanel.getContentPane().add(panel, BorderLayout.EAST);
+    	
+    	connectionPanel.serverField.setText("localhost");
+    	connectionPanel.serverPortField.setText("4567");
+    	
     	connectionPanel.setVisible(true);
     	
 
