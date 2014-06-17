@@ -51,7 +51,7 @@ public class TU {
 		BroadcastThread.sendMessage(userHub, "Message HUB");
 
 		String msg = BroadcastThread.getSendMessage();
-		if (msg.equals("#Message HUB#")) {
+		if (msg.equals("#HUB#Message HUB")) {
 			System.out.println("Envoi du message :Message HUB -->OK");
 		} else {
 			fail("Envoi du message :Message HUB -->KO");

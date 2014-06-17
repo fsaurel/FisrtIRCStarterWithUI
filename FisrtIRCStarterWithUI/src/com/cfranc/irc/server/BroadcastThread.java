@@ -8,9 +8,8 @@ import java.util.Iterator;
 import com.cfranc.irc.IfClientServerProtocol;
 
 public class BroadcastThread extends Thread {
-	
+
 	private static String sendMessage;
-	
 
 	public static String getSendMessage() {
 		return sendMessage;
@@ -39,11 +38,17 @@ public class BroadcastThread extends Thread {
 		Iterator<ServerToClientThread> receiverClientThreadIterator = clientTreads.iterator();
 		while (receiverClientThreadIterator.hasNext()) {
 			ServerToClientThread clientThread = (ServerToClientThread) receiverClientThreadIterator.next();
-			
-			//clientThread.post("#" + sender.getLogin() + "#" + msg);
-			//System.out.println("sendMessage : " + "#" + sender.getLogin() + "#" + msg);
-			sendMessage=IfClientServerProtocol.SEPARATOR+msg+IfClientServerProtocol.SEPARATOR;
-			clientThread.post(sendMessage);
+
+			// clientThread.post("#" + sender.getLogin() + "#" + msg);
+			// System.out.println("sendMessage : " + "#" + sender.getLogin() +
+			// "#" + msg);
+
+			//if (!msg.equals(".bye")) {
+				sendMessage = IfClientServerProtocol.SEPARATOR + sender.getLogin() + IfClientServerProtocol.SEPARATOR + msg;
+			//} else {
+			//	sendMessage = IfClientServerProtocol.DEL  + sender.getLogin() + IfClientServerProtocol.SEPARATOR + msg;
+			//}
+			clientThread.post(sendMessage); 
 			System.out.println(sendMessage);
 		}
 	}
@@ -52,9 +57,9 @@ public class BroadcastThread extends Thread {
 		Collection<ServerToClientThread> clientTreads = clientTreadsMap.values();
 		Iterator<ServerToClientThread> receiverClientThreadIterator = clientTreads.iterator();
 		while (receiverClientThreadIterator.hasNext()) {
-			ServerToClientThread clientThread = (ServerToClientThread) receiverClientThreadIterator.next();			
-			//clientThread.post("#+#" + sender.getLogin());
-			//System.out.println("#+#" + sender.getLogin());
+			ServerToClientThread clientThread = (ServerToClientThread) receiverClientThreadIterator.next();
+			// clientThread.post("#+#" + sender.getLogin());
+			// System.out.println("#+#" + sender.getLogin());
 			clientThread.post(IfClientServerProtocol.ADD + sender.getLogin());
 			System.out.println(IfClientServerProtocol.ADD + sender.getLogin());
 		}
@@ -65,8 +70,8 @@ public class BroadcastThread extends Thread {
 		Iterator<User> receiverClientUserIterator = clientUsers.iterator();
 		while (receiverClientUserIterator.hasNext()) {
 			User clientUser = (User) receiverClientUserIterator.next();
-//			newUserThread.post("#+#" + clientUser.getLogin());
-//			System.out.println("#+#" + clientUser.getLogin());
+			// newUserThread.post("#+#" + clientUser.getLogin());
+			// System.out.println("#+#" + clientUser.getLogin());
 			newUserThread.post(IfClientServerProtocol.ADD + clientUser.getLogin());
 			System.out.println(IfClientServerProtocol.ADD + clientUser.getLogin());
 		}
