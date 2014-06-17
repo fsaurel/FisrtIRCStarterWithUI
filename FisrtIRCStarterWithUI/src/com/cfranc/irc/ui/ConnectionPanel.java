@@ -27,10 +27,10 @@ import java.sql.SQLException;
 
 public class ConnectionPanel extends JDialog {
 
-    private JTextField serverPortField;
-    private JTextField serverField;
-    private JTextField userNameField;
-    private JPasswordField passwordField;
+    public JTextField serverPortField;
+    public JTextField serverField;
+    public JTextField userNameField;
+    public JPasswordField passwordField;
     private JButton btnNewButton = new JButton("Connexion");
     
 
@@ -103,6 +103,9 @@ public class ConnectionPanel extends JDialog {
 	    
 	    
 	    panel_1.add(btnNewButton);
+	    
+	    JButton btnQuit = new JButton("Quit");
+	    panel_1.add(btnQuit);
 	    
 	    JPanel panel_2 = new JPanel();
 	    getContentPane().add(panel_2, BorderLayout.CENTER);
@@ -185,6 +188,16 @@ public class ConnectionPanel extends JDialog {
 				newuserihm.setVisible(true);
 			}
 		});
+	    
+	    btnQuit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.exit(0);
+			}
+		});
+	    
 //	    setPreferredSize(new Dimension(300,200));
 	    setBounds(100, 100, 600, 400);
 	}

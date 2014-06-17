@@ -48,7 +48,7 @@ public class SimpleChatClientApp {
     String serverName;
     String clientName;
     String clientPwd;
-    public static boolean connecok; 
+    public static int connecok; 
     public ConnectionPanel connectionPanel=new ConnectionPanel();
     
 	public SimpleChatFrameClient frame;
@@ -92,7 +92,7 @@ public class SimpleChatClientApp {
 		this.frame.setTitle(this.frame.getTitle()+" : "+clientName+" connected to "+serverName+":"+serverPort);
 		((JFrame)this.frame).setVisible(true);
 		this.frame.addWindowListener(new WindowListener() {
-			
+					
 			@Override
 			public void windowOpened(WindowEvent e) {
 				// TODO Auto-generated method stub
@@ -207,7 +207,7 @@ public class SimpleChatClientApp {
 					app.displayConnectionDialog();
 					System.out.println("app.displayConnectionDialog();");
 
-					if (connecok){
+					if (connecok == 2){
 
 						app.connectClient();
 						System.out.println("app.connectClient();");
@@ -244,42 +244,92 @@ public class SimpleChatClientApp {
 		}
 	}
 	
-	public boolean verifLoginUtilisateur() throws SQLException{
+	public int verifLoginUtilisateur() throws SQLException{
 		
 		Connection connection = null;
 		
-		serverPort=Integer.parseInt(connectionPanel.getServerPortField().getText());
-		serverName=connectionPanel.getServerField().getText();
-		clientName=connectionPanel.getUserNameField().getText();
-		clientPwd=connectionPanel.getPasswordField().getText();
+		System.out.println(connectionPanel.getServerPortField().getText());
 
 		
+	    if (connectionPanel.getServerPortField().getText().equals("")){
+	    	JOptionPane.showMessageDialog(connectionPanel, "Vous devez renseigner le port !", "Hey!", JOptionPane.ERROR_MESSAGE);
+			connectionPanel.serverPortField.requestFocus();
+			connectionPanel.serverPortField.setBackground(Color.LIGHT_GRAY);
+	    	connecok = 0 ;
+	    	return 0;
+	    } else{
+	    	serverPort=Integer.parseInt(connectionPanel.getServerPortField().getText());
+	    	connectionPanel.serverPortField.setBackground(Color.white);
+	    }
+	    
+	    if (connectionPanel.getServerField().getText().equals("")){
+	    	JOptionPane.showMessageDialog(connectionPanel, "Vous devez renseigner le serveur !", "Hey!", JOptionPane.ERROR_MESSAGE);
+			connectionPanel.serverField.requestFocus();
+			connectionPanel.serverField.setBackground(Color.LIGHT_GRAY);
+	    	connecok = 0 ;
+	    	return 0;
+	    } else{
+	    	serverName=connectionPanel.getServerField().getText();
+	    	connectionPanel.serverField.setBackground(Color.white);
+	    }
+	    
+	    if (connectionPanel.getUserNameField().getText().equals("")){
+	    	JOptionPane.showMessageDialog(connectionPanel, "Vous devez renseigner le User !", "Hey!", JOptionPane.ERROR_MESSAGE);
+			connectionPanel.userNameField.requestFocus();
+			connectionPanel.userNameField.setBackground(Color.LIGHT_GRAY);
+	    	connecok = 0 ;
+	    	return 0;
+	    } else{
+	    	clientName=connectionPanel.getUserNameField().getText();
+	    	connectionPanel.userNameField.setBackground(Color.white);
+	    }
+	    
+	    if (connectionPanel.getPasswordField().getText().equals("")){
+	    	JOptionPane.showMessageDialog(connectionPanel, "Vous devez renseigner le Password !", "Hey!", JOptionPane.ERROR_MESSAGE);
+			connectionPanel.passwordField.requestFocus();
+			connectionPanel.passwordField.setBackground(Color.LIGHT_GRAY);
+	    	connecok = 0 ;
+	    	return 0;
+	    } else{
+	    	clientPwd=connectionPanel.getPasswordField().getText();
+	    	connectionPanel.passwordField.setBackground(Color.white);
+	    }
+		
+		
+		
+		
+		
+
 		if(JDBC.isValidURL("jdbc:sqlite:Z:/04_TP/FSAU/BDD/IRC.SQLITE")) {
 			connection = DriverManager.getConnection("jdbc:sqlite:Z:/04_TP/FSAU/BDD/IRC.SQLITE");
 		}
 		
-
 		System.out.println("la connexion est : " + connection.toString());
 		Statement statement = connection.createStatement();
 		String myrequete = "SELECT COUNT(*)  FROM USERS WHERE PSEUDO = '" + clientName + "' AND PASSWORD = '" + clientPwd + "'";
 		System.out.println(myrequete);
 		ResultSet rs = statement.executeQuery(myrequete);
 		
-	
 		if (rs.getInt(1) == 1){
 			System.out.println("Mot de passe OK");
-			connecok = true;
+			connecok = 2;
+			return 2;
 		} else {
 			System.out.println("Mot de passe KO");
-			connecok = false;
+			connecok = 1;
+			return 1 ;
 		}
 		
-		
-		return connecok;
 
+
+		
 		
 	}
 
+	
+	
+	
+	
 	public class connexionButton implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 
@@ -289,18 +339,17 @@ public class SimpleChatClientApp {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-			if (connecok){
+
+			if (connecok == 2){
 				connectionPanel.dispose();
-			}else {
+			}else if (connecok == 1) {
 				JOptionPane.showMessageDialog(connectionPanel, "Le mot de passe n'est pas correct", "alert", JOptionPane.ERROR_MESSAGE);
 			}
-			
-			
-
-
 		}
 	}
+
+	
+	
 	
 }
 
