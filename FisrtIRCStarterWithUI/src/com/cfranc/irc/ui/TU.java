@@ -3,10 +3,8 @@ package com.cfranc.irc.ui;
 import static org.junit.Assert.fail;
 
 import java.net.Socket;
-
 import org.junit.Before;
 import org.junit.Test;
-
 import com.cfranc.irc.server.BroadcastThread;
 import com.cfranc.irc.server.ServerToClientThread;
 import com.cfranc.irc.server.User;
