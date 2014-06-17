@@ -11,6 +11,7 @@ import java.awt.event.AdjustmentListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -309,6 +310,44 @@ public class SimpleChatFrameClient extends JFrame {
 				} else {
 					getLblSender().setText("?"); //$NON-NLS-1$
 				}
+			}
+		});
+		
+		list.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+			    if (e.getClickCount() == 2) {
+			        //code à exécuter
+			    	syso_tabOngletNames("double clic");
+			    	addOngletSplitPane(senderName, getPopupMenu());
+			      }
+				
 			}
 		});
 		

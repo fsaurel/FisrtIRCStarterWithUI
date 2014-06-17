@@ -25,7 +25,7 @@ import com.cfranc.irc.controller.NewUserController;
 import java.awt.BorderLayout;
 import java.sql.SQLException;
 
-public class ConnectionPanel extends JDialog {
+public class ConnectionPanel extends javax.swing.JDialog {
 
     public JTextField serverPortField;
     public JTextField serverField;
