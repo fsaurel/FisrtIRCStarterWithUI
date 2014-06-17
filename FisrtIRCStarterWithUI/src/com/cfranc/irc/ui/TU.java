@@ -1,10 +1,10 @@
 package com.cfranc.irc.ui;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.net.Socket;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import com.cfranc.irc.server.BroadcastThread;
@@ -19,9 +19,9 @@ public class TU {
 	Socket socket = new Socket();
 	ServerToClientThread serverToClientThread = new ServerToClientThread(userHub, socket);
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-
+	@Before
+	public void setUpBeforeClass() throws Exception {
+		userHub = new User("HUB", "HH");
 	}
 
 	@Test
@@ -31,29 +31,25 @@ public class TU {
 		} else {
 			fail("Test Utilisateur HUB ajouté KO");
 		}
-
-	}
-	
-	@Test
-	public void test2() {
+		
 		if (BroadcastThread.clientTreadsMap.containsKey(userHub)) {
 			System.out.println("Utilisateur HUB ajouté:OK");
 		} else {
 			fail("Utilisateur HUB ajouté : KO");
 		}
-	}
-
-	@Test
-	public void test3() {
+		
 		if (!BroadcastThread.clientTreadsMap.containsKey(userFred)) {
 			System.out.println("Utilisateur Fred absent:OK");
 		} else {
 			fail("Utilisateur Fred absent:KO");
 		}
+
 	}
+	
+
 
 	@Test
-	public void test4() {
+	public void test2() {
 		BroadcastThread.sendMessage(userHub, "Message HUB");
 
 		String msg = BroadcastThread.getSendMessage();
